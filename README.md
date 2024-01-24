@@ -33,8 +33,7 @@ To get started with this Flutter project, follow the steps below:
 
 1. Clone the repository to your local machine:
 
-git clone https://github.com/your-username/your-repo.git
-
+git clone https://github.com/mohammadhammadi/flutter_base_project.git
 
 2. Ensure that you have Flutter installed on your machine. If not, refer to the [Flutter installation guide](https://flutter.dev/docs/get-started/install) for instructions.
 
@@ -43,7 +42,6 @@ git clone https://github.com/your-username/your-repo.git
 4. Install the project dependencies by running the following command in the project root directory:
 
 flutter pub get
-
 
 5. Run the app on a connected device or emulator:
 
