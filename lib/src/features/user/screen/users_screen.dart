@@ -13,6 +13,7 @@ import '../../../shared/widgets/custom_error_widget.dart';
 import '../data/models/user_model.dart';
 import '../providers/user_data_provider.dart';
 import '../widgets/user_card_widget.dart';
+import '../widgets/user_details.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
@@ -134,7 +135,15 @@ class UserScreen extends StatelessWidget {
                                 ),
                               );
                         },
-                        child: UserCardView(user: data[index]),
+                        child: GestureDetector(
+                            onTap: () {
+                              Scaffold.of(context).showBottomSheet<void>(
+                                (BuildContext context) {
+                                  return UserDetails(user: data[index]);
+                                },
+                              );
+                            },
+                            child: UserCardView(user: data[index])),
                       );
                     }),
               ),

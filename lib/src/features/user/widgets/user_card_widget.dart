@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_project/src/core/app/font_manager.dart';
 import 'package:flutter_base_project/src/core/app/style_manager.dart';
 import 'package:flutter_base_project/src/core/app/values_manager.dart';
+import 'package:flutter_base_project/src/shared/widgets/device_dimensions_widget.dart';
 
 import '../../../core/app/color_manager.dart';
 import '../data/models/user_model.dart';
@@ -16,71 +17,74 @@ class UserCardView extends StatelessWidget {
   final UserModel user;
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    return Card(
-      elevation: AppSize.s5,
-      child: ClipPath(
-        clipper: ShapeBorderClipper(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSize.s5),
-          ),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: ColorManager.colorPrimaryLight,
-                width: AppSize.s5,
-              ),
+    return DeviceDimensionsWidget(builder: (context, deviceDimensions) {
+      return Card(
+        elevation: AppSize.s5,
+        child: ClipPath(
+          clipper: ShapeBorderClipper(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSize.s5),
             ),
-            color: ColorManager.colorWhite,
           ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppPadding.p10,
-            vertical: AppPadding.p6,
-          ),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10000.0),
-                child: CachedNetworkImage(
-                  width: screenWidth * 0.2,
-                  height: screenWidth * 0.2,
-                  imageUrl: user.avatar!,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      CircularProgressIndicator(
-                    value: downloadProgress.progress,
-                  ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                right: BorderSide(
+                  color: ColorManager.colorPrimaryLight,
+                  width: AppSize.s5,
                 ),
               ),
-              const SizedBox(
-                width: AppSize.s20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${user.firstName} ${user.lastName}',
-                    style: getMediumStyle(
-                        fontSize: FontSize.s16,
-                        color: Theme.of(context).primaryColor),
+              color: ColorManager.colorWhite,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppPadding.p10,
+              vertical: AppPadding.p6,
+            ),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10000.0),
+                  child: CachedNetworkImage(
+                    width: deviceDimensions.screenWidth * 0.2,
+                    height: deviceDimensions.screenWidth * 0.2,
+                    imageUrl: user.avatar!,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                            CircularProgressIndicator(
+                      value: downloadProgress.progress,
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
-                  const SizedBox(
-                    height: AppSize.s10,
-                  ),
-                  Text(
-                    user.email ?? '',
-                    style:
-                        getRegularStyle(color: Theme.of(context).primaryColor),
-                  ),
-                ],
-              )
-            ],
+                ),
+                const SizedBox(
+                  width: AppSize.s20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${user.firstName} ${user.lastName}',
+                      style: getMediumStyle(
+                          fontSize: FontSize.s16,
+                          color: Theme.of(context).primaryColor),
+                    ),
+                    const SizedBox(
+                      height: AppSize.s10,
+                    ),
+                    Text(
+                      user.email ?? '',
+                      style: getRegularStyle(
+                          color: Theme.of(context).primaryColor),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
 /*
     return ListView.builder(
       itemCount: usersList.length,
