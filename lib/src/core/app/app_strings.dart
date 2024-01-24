@@ -20,4 +20,5 @@ class AppStrings {
       'Are you sure you want to delete user?';
   static const String cancel = 'Cancel';
   static const String delete = 'Delete';
+  static const String userAddedMessage = 'User has been added successfully';
 }

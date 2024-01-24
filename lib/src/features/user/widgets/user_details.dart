@@ -19,10 +19,12 @@ class UserDetails extends StatelessWidget {
         color: Theme.of(context).primaryColorDark,
         padding: const EdgeInsets.only(
           left: AppPadding.p14,
-          bottom: AppPadding.p30,
+          bottom: AppPadding.p20,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Align(
               alignment: Alignment.topRight,
@@ -38,8 +40,8 @@ class UserDetails extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10000.0),
               child: CachedNetworkImage(
-                width: deviceDimensions.screenWidth * 0.2,
-                height: deviceDimensions.screenWidth * 0.2,
+                width: deviceDimensions.screenWidth * 0.3,
+                height: deviceDimensions.screenWidth * 0.3,
                 imageUrl: user.avatar!,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(
@@ -48,16 +50,18 @@ class UserDetails extends StatelessWidget {
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
+            SizedBox(height: AppSize.s10,),
             ListTile(
               leading: Icon(
                 Icons.person,
                 color: ColorManager.colorWhite,
+                size: AppSize.s30,
               ),
               title: Text(
                 '${user.firstName} ${user.lastName}',
                 style: getLightStyle(
                   color: ColorManager.colorWhite,
-                  fontSize: FontSize.s16,
+                  fontSize: FontSize.s18,
                 ),
               ),
             ),
@@ -65,12 +69,13 @@ class UserDetails extends StatelessWidget {
               leading: Icon(
                 Icons.email,
                 color: ColorManager.colorWhite,
+                size: AppSize.s30,
               ),
               title: Text(
                 user.email!,
                 style: getLightStyle(
                   color: ColorManager.colorWhite,
-                  fontSize: FontSize.s16,
+                  fontSize: FontSize.s18,
                 ),
               ),
             )

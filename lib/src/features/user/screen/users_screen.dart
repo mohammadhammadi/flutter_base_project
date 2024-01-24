@@ -5,7 +5,9 @@ import 'package:flutter_base_project/src/core/app/color_manager.dart';
 import 'package:flutter_base_project/src/core/app/font_manager.dart';
 import 'package:flutter_base_project/src/core/app/style_manager.dart';
 import 'package:flutter_base_project/src/core/app/values_manager.dart';
+import 'package:flutter_base_project/src/router/app_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/app/app_strings.dart';
 import '../../../core/networking/dio_exception.dart';
@@ -38,10 +40,10 @@ class UserScreen extends StatelessWidget {
                 horizontal: AppPadding.p4,
               ),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () => context.pushNamed(AppRoute.userForm.name),
                 icon: const Icon(
                   Icons.add_circle,
-                  size: AppSize.s30,
+                  size: AppSize.s35,
                 ),
               ),
             ),
