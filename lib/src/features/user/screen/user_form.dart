@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_project/src/core/app/extensions.dart';
 import 'package:flutter_base_project/src/core/app/values_manager.dart';
 import 'package:flutter_base_project/src/shared/widgets/device_dimensions_widget.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/app/app_strings.dart';
 import '../../../core/app/color_manager.dart';
@@ -160,6 +161,7 @@ class _UserFormState extends State<UserForm> {
                               ),
                             ),
                           );
+                          context.pop();
                         });
                       },
                     ),
