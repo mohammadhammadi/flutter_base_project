@@ -28,6 +28,7 @@ class _UserFormState extends State<UserForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
+          // Todo : Move all  hardcoded strings to AppStrings
           'Add User',
           style: getLightStyle(
             color: ColorManager.colorWhite,
@@ -145,6 +146,8 @@ class _UserFormState extends State<UserForm> {
                         });
                         await Future.delayed(const Duration(seconds: 2))
                             .then((value) {
+                          // Todo Call users api
+                          // Todo Handle loading state using Riverpod
                           setState(() {
                             isLoading = false;
                           });

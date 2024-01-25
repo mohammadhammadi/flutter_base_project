@@ -49,7 +49,11 @@ flutter run
 
 ## App Overview
 
-The app's home page fetches user data from a free API using `dio` for API requests and displays it in a list. Each list item shows the user's name, email, and profile image. The user can swipe any list item to delete it. The list can also be refreshed by swiping down.
+The app's home page fetches user data from a free API using `dio` for API requests and displays it in a list. 
+Each list item shows the user's name, email, and profile image. 
+The user can swipe any list item to delete it. 
+The list can also be refreshed by swiping down.
+In case of error, error screen will be displayed
 
 When a list item is pressed, a bottom modal is shown, providing more detailed information about the user.
 
